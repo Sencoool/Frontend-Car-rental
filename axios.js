@@ -108,7 +108,7 @@ app.get("/payment", async (req, res) => {
         console.log(response.data);
         if (userlogin == true) {
             res.render("payment.ejs", {
-                payment: response.data
+                createuser: response.data
             });
         } else if (userlogin == false) {
             res.render("login.ejs");
