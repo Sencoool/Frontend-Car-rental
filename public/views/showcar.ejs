@@ -4,37 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/create.css"/>
+    <!-- <link rel="stylesheet" href="../css/create.css"/> -->
 
 </head>
 <body>
 
-    <h1>car</h1>
+    <h1>Car Rental System</h1>
     
-    <form action="/showcar" method="post">
-        <label for="">carid</label>
-        <input type="text" name="carid">
-        <label for="">licenseplate</label>
-        <input type="text" name="licenseplate">
-        <label for="">year</label>
-        <input type="email" name="year">
-        <label for="">capacity</label>
-        <input type="tel" name="capacity">
-        <label for="">priceperday</label>
-        <input type="text" name="priceperday">
-        <label for="">insurance_charge</label>
-        <input type="text" name="insurance_charge">
-        <label for="">brand</label>
-        <input type="text" name="brand">
-        <label for="">color</label>
-        <input type="text" name="color">
-        <label for="">Image</label>
-        <input type="text" name="Image">
-        <!-- input image (multer) -->
-        <input type="submit" value="ok">
-    </form>
-    <a href="/logout">logout</a>
-    <a href="/createcar">createcar</a>
-    
+    <table>
+        <tr>
+            <th>Car ID</th>
+            <th>License Plate</th>
+            <th>Year</th>
+            <th>Capacity</th>
+            <th>Price Per Day</th>
+            <th>Insurance Charge</th>
+            <th>Brand</th>
+            <th>Color</th>
+            <th>Image</th>
+            <% for(var i=0; i < showcar.length; i++) { %>
+                <tr>
+                    <td><%= showcar[i].carid %></td>
+                    <td><%= showcar[i].licenseplate %></td>
+                    <td><%= showcar[i].year %></td>
+                    <td><%= showcar[i].capacity %></td>
+                    <td><%= showcar[i].priceperday %>$</td>
+                    <td><%= showcar[i].insurance_charge %>$</td>
+                    <td><%= showcar[i].brand %></td>
+                    <td><%= showcar[i].color %></td>
+                    <td>
+                        <img src="/images/<%= showcar[i].Image %>" alt="">
+                    </td>
+                </tr>
+            <% } %>
+            
+        </tr>
+    </table>
+
+    <!-- Add your other content or links here -->
+    <a href="/logout">Log Out</a><br>
+    <a href="/createcar">Create Car</a>
 </body>
 </html>

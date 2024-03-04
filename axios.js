@@ -26,10 +26,15 @@ const upload = multer({storage: storage});
 //var
 let userlogin = false;
 
-app.get("/",(req,res) => {
+app.get("/", async (req,res) => {
     try{
+        const response = await axios.get(url + "/showcar");
+        console.log(response.data);
         if (userlogin == true) {
-            res.render("showcar.ejs");
+
+            res.render("showcar.ejs",{
+                showcar: response.data
+            });
         }
         else if (userlogin == false){
             res.render("login.ejs");
