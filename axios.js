@@ -102,6 +102,54 @@ app.post("/createcar",upload.single("Image"), async (req,res) => {
     }
 });
 
+app.get("/payment", async (req, res) => {
+    try {
+        const response = await axios.get(url + "/payment");
+        console.log(response.data);
+        if (userlogin == true) {
+            res.render("payment.ejs", {
+                payment: response.data
+            });
+        } else if (userlogin == false) {
+            res.render("login.ejs");
+        }
+    } catch {
+        res.status(500).send("error");
+    }
+});
+
+app.get("/rental", async (req, res) => {
+    try {
+        const response = await axios.get(url + "/rental");
+        console.log(response.data);
+        if (userlogin == true) {
+            res.render("rental.ejs", {
+                rental: response.data
+            });
+        } else if (userlogin == false) {
+            res.render("login.ejs");
+        }
+    } catch {
+        res.status(500).send("error");
+    }
+});
+
+app.get("/receipt", async (req, res) => {
+    try {
+        const response = await axios.get(url + "/receipt");
+        console.log(response.data);
+        if (userlogin == true) {
+            res.render("receipt.ejs", {
+                rental: response.data
+            });
+        } else if (userlogin == false) {
+            res.render("login.ejs");
+        }
+    } catch {
+        res.status(500).send("error");
+    }
+});
+
 app.listen(5500, () => {
     console.log(`Server is running on http://localhost:5500`);
 });
