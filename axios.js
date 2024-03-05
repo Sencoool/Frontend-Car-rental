@@ -1,4 +1,6 @@
+// axios.js
 const express = require("express");
+const session = require("express-session");
 const axios = require('axios');
 const app = express();
 const multer = require("multer")
@@ -26,6 +28,15 @@ const upload = multer({storage: storage});
 //var
 let userlogin = false;
 
+app.use(
+    session({
+        secret: "key cookie",
+        resave: false,
+        saveUninitialized: false
+    })
+);
+
+// showcar
 app.get("/", async (req,res) => {
     try{
         const response = await axios.get(url + "/showcar");
@@ -45,30 +56,47 @@ app.get("/", async (req,res) => {
     }
 });
 
+// login
 app.post("/login", async (req,res) => {
     try{
-        const response = await axios.get(url + "/getuser");
-        response.data.forEach(e => {
-            if (req.body.username == e.username && req.body.password == e.password) {
-                userlogin = true;
-            }
-        });
-        res.redirect("/");
+        const data = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        console.log(data);
+        const response = await axios.post(url + "/login",data);
+        if (response.data.massage == true){
+            userlogin = true;
+            res.redirect("/showcar");
+        }
+        // await axios.get(url + "/login",data);
+        // response.data.forEach(e => {
+        //     if (req.body.username == e.username && req.body.password == e.password) {
+        //         userlogin = true;
+        //         req.session.userdata = {
+        //             name: res.data.username
+        //         }
+        //         console.log(req.session.userdata);
+        //     }
+        // });
     }
     catch{
         res.status(500).send("error")
     }
 });
 
+// logout
 app.get("/logout",(req,res) => {
     userlogin = false;
     res.redirect("/")
 });
 
+// createuser
 app.get("/createuser",(req,res) => {
     res.render("createuser.ejs");
 });
 
+// createuser
 app.post("/createuser", async (req,res) => {
     try{
         const response = await axios.post(url + "/createuser",req.body);
@@ -79,10 +107,12 @@ app.post("/createuser", async (req,res) => {
     }
 });
 
+// createcar
 app.get("/createcar",(req,res) => {
     res.render("createcar.ejs");
 });
 
+// createcar
 app.post("/createcar",upload.single("Image"), async (req,res) => {
     try{
         let data = {
@@ -102,13 +132,33 @@ app.post("/createcar",upload.single("Image"), async (req,res) => {
     }
 });
 
+// showcar
+app.get("/showcar", async (req, res) => {
+    try {
+        const response = await axios.get(url + "/showcar");
+
+        // เช็ค session และ userlogin
+        if (req.session.userdata || userlogin == true) {
+            res.render("showcar.ejs", {
+                showcar: response.data
+            });
+        } else {
+            res.render("login.ejs");
+        }
+    } catch {
+        res.status(500).send("error");
+    }
+});
+
+
+// payment
 app.get("/payment", async (req, res) => {
     try {
         const response = await axios.get(url + "/payment");
         console.log(response.data);
         if (userlogin == true) {
             res.render("payment.ejs", {
-                createuser: response.data
+                payment: response.data
             });
         } else if (userlogin == false) {
             res.render("login.ejs");
@@ -118,6 +168,7 @@ app.get("/payment", async (req, res) => {
     }
 });
 
+// rental
 app.get("/rental", async (req, res) => {
     try {
         const response = await axios.get(url + "/rental");
@@ -134,6 +185,7 @@ app.get("/rental", async (req, res) => {
     }
 });
 
+// receipt
 app.get("/receipt", async (req, res) => {
     try {
         const response = await axios.get(url + "/receipt");

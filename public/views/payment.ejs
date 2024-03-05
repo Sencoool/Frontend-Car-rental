@@ -1,23 +1,44 @@
+<!-- payment.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Car Payment System</title>
     <!-- <link rel="stylesheet" href="../css/create.css"/> -->
 
 </head>
 <body>
 
-    <h1>Car payment System</h1>
-    
-    userid<br>
-    username<br>
-    paymentid<br>
-    carholdername<br>
+    <h1>Car Payment System</h1>
+
+    <table>
+        <!-- Display user information -->
+        
+        <tr>
+            <td>User ID</td>
+            <td>Username</td>
+        </tr>
+        <form action="/payment" method="post">
+            <label for="">User ID</label><br>
+            
+            <label for="">Username</label><br>
+            <label for="">carholdername</label><br>
+            <input type="text" name="carholdername"><br>
+            <label for="">cardnumber</label><br>
+            <input type="text" name="cardnumber"><br>
+            <input type="submit" value="ok">
+        </form>
+        <% for(var i=0; i < payment.length; i++) { %>
+            <tr>
+                <td><%= payment[i].userid %></td>
+                <td><%= payment[i].username %></td>
+            </tr>
+        <% } %>
+    </table>
 
     <!-- Add your other content or links here -->
-    <a href="/rental">rental</a><br>
-    <a href="/">back</a>
+    <a href="/rental">Go to Rental</a><br>
+    <a href="/">Go Back</a>
 </body>
 </html>

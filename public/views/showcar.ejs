@@ -4,46 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="../css/create.css"/> -->
+    <link rel="stylesheet" href="../css/car.css"/>
 
 </head>
 <body>
 
-    <h1>Car Rental System</h1>
+    <center>
+        <h1 class="main-heading">Car Rental System</h1>
     
-    <table>
-        <tr>
-            <th>Car ID</th>
-            <th>License Plate</th>
-            <th>Year</th>
-            <th>Capacity</th>
-            <th>Price Per Day</th>
-            <th>Insurance Charge</th>
-            <th>Brand</th>
-            <th>Color</th>
-            <th>Image</th>
-            <% for(var i=0; i < showcar.length; i++) { %>
-                <tr>
-                    <td><%= showcar[i].carid %></td>
-                    <td><%= showcar[i].licenseplate %></td>
-                    <td><%= showcar[i].year %></td>
-                    <td><%= showcar[i].capacity %></td>
-                    <td><%= showcar[i].priceperday %>$</td>
-                    <td><%= showcar[i].insurance_charge %>$</td>
-                    <td><%= showcar[i].brand %></td>
-                    <td><%= showcar[i].color %></td>
-                    <td>
-                        <img src="/images/<%= showcar[i].Image %>" alt="">
-                    </td>
-                </tr>
-            <% } %>
-            
-        </tr>
-    </table>
-
+    <main class="main-content">
+        <table class="car-table">
+            <tr>
+                <th>Car ID</th>
+                <th>License Plate</th>
+                <th>Year</th>
+                <th>Capacity</th>
+                <th>Price Per Day</th>
+                <th>Insurance Charge</th>
+                <th>Brand</th>
+                <th>Color</th>
+                <th>Image</th>
+                <% for(var i=0; i < showcar.length; i++) { %>
+                    <tr>
+                        <td><%= showcar[i].carid %></td>
+                        <td><%= showcar[i].licenseplate %></td>
+                        <td><%= showcar[i].year %></td>
+                        <td><%= showcar[i].capacity %></td>
+                        <td><%= showcar[i].priceperday %>$</td>
+                        <td><%= showcar[i].insurance_charge %>$</td>
+                        <td><%= showcar[i].brand %></td>
+                        <td><%= showcar[i].color %></td>
+                        <td>
+                            <img src="/images/<%= showcar[i].Image %>" alt="">
+                        </td>
+                    </tr>
+                <% } %>
+            </tr>
+        </table>
+    </main>
     <!-- Add your other content or links here -->
-    <a href="/payment">buy</a><br>
-    <a href="/logout">Log Out</a><br>
-    <a href="/createcar">Create Car</a>
+    <div class="button-container">
+        <button class="button"><a href="/logout">Log Out</a><br></button>
+        <button class="button"><a href="/payment">buy</a><br></button>
+        <!-- <button class="button"><a href="/createcar">Create Car</a></button> -->
+    </div></center>
 </body>
 </html>

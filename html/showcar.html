@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="../css/create.css"/> -->
-
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="/public/css/car.css"/>
 </head>
-<body>
+<body class="body">
 
-    <h1>Car Rental System</h1>
-    
-    <table>
-        <tr>
-            <th>Car ID</th>
-            <th>License Plate</th>
-            <th>Year</th>
-            <th>Capacity</th>
-            <th>Price Per Day</th>
-            <th>Insurance Charge</th>
-            <th>Brand</th>
-            <th>Color</th>
-            <th>Image</th>
-            <!-- <% for(var i=0; i < showcar.length; i++) { %> -->
+<center>
+    <h1 class="main-heading">Car Rental System</h1>
+</center>
+
+    <main class="main-content">
+        <table class="car-table">
+            <thead>
+                <tr>
+                    <th>Car ID</th>
+                    <th>License Plate</th>
+                    <th>Year</th>
+                    <th>Capacity</th>
+                    <th>Price Per Day</th>
+                    <th>Insurance Charge</th>
+                    <th>Brand</th>
+                    <th>Color</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
                 <tr>
                     <td>3</td>
                     <td>122501</td>
@@ -33,23 +38,32 @@
                     <td>Pegassi Ignus</td>
                     <td>grey</td>
                     <td>
-                        <img src="17095724848058.webp" alt="">
+                        <img src="17095724848058.webp" alt="Car Image" class="car-image">
                     </td>
                 </tr>
-            <!-- <% } %> -->
-            <!-- <td><%= showcar[i].carid %></td>
-                    <td><%= showcar[i].licenseplate %></td>
-                    <td><%= showcar[i].year %></td>
-                    <td><%= showcar[i].capacity %></td>
-                    <td><%= showcar[i].priceperday %>$</td>
-                    <td><%= showcar[i].insurance_charge %>$</td>
-                    <td><%= showcar[i].brand %></td>
-                    <td><%= showcar[i].color %></td> -->
-        </tr>
-    </table>
+                <tr>
+                    <td>4</td>
+                    <td>122501</td>
+                    <td>2019</td>
+                    <td>2</td>
+                    <td>2,765,000$</td>
+                    <td>866,250$</td>
+                    <td>Pegassi Ignus</td>
+                    <td>grey</td>
+                    <td>
+                        <img src="17095724848058.webp" alt="Car Image" class="car-image">
+                    </td>
+                </tr>
+                <!-- Add more rows if needed -->
+            </tbody>
+        </table>
 
-    <!-- Add your other content or links here -->
-    <a href="/logout">Log Out</a><br>
-    <a href="/createcar">Create Car</a>
+        <div class="button-container">
+            <button class="button">Log Out</button>
+            <button class="button">Create Car</button>
+        </div>
+    </main>
+
+
 </body>
 </html>

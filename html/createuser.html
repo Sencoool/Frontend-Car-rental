@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="/public/css/create.css"/>
+
 </head>
 <body>
 
-    <form action="/createuser" method="post">
-        <label for="">driving number</label>
-        <input type="text" name="drivinglicense">
-        <label for="">address</label>
-        <input type="text" name="address">
-        <label for="">email</label>
-        <input type="email" name="email">
-        <label for="">phone number</label>
-        <input type="tel" name="phone">
-        <label for="">username</label>
-        <input type="text" name="username">
-        <label for="">password</label>
-        <input type="text" name="password">
-        <input type="submit" value="ok">
-    </form>
-    <a href="/">back</a>
+    <div class="form-container">
+        <h2 class="form-heading">Register</h2>
     
+        <form action="/login" method="post">
+<br>
+            <center>
+            <input type="text" id="username" name="username" class="input-field" placeholder ="driving number">
+            <input type="password" id="password" name="password" class="input-field" placeholder ="address" >
+            <input type="text" id="username" name="username" class="input-field" placeholder ="email">
+            <input type="password" id="password" name="password" class="input-field" placeholder ="phone number" >
+            <input type="text" id="username" name="username" class="input-field" placeholder ="username">
+            <input type="password" id="password" name="password" class="input-field" placeholder ="password" >
+            
+            <input type="submit" value="Login" class="btn"> <br><br>
+            <input type="button" value="Back" class="btnB">
+        </form>
+   
+        <p class="error-message"> </p>
+    </div> </center>
+
 </body>
 </html>
