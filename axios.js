@@ -6,7 +6,7 @@ const app = express();
 const multer = require("multer")
 const path = require("path");
 
-//setproject
+//setproject********************************************************************************************
 app.set("views",path.join(__dirname,"/public/views"));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,"/public")));
@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
-//var
+//var********************************************************************************************
 let userlogin = false;
 
 app.use(
@@ -36,11 +36,10 @@ app.use(
     })
 );
 
-// showcar
+// showcar********************************************************************************************
 app.get("/", async (req,res) => {
     try{
         const response = await axios.get(url + "/showcar");
-        console.log(response.data);
         if (userlogin == true) {
 
             res.render("showcar.ejs",{
@@ -56,7 +55,7 @@ app.get("/", async (req,res) => {
     }
 });
 
-// login
+// login********************************************************************************************
 app.post("/login", async (req,res) => {
     try{
         const data = {
@@ -85,18 +84,18 @@ app.post("/login", async (req,res) => {
     }
 });
 
-// logout
+// logout********************************************************************************************
 app.get("/logout",(req,res) => {
     userlogin = false;
     res.redirect("/")
 });
 
-// createuser
+// createuser********************************************************************************************
 app.get("/createuser",(req,res) => {
     res.render("createuser.ejs");
 });
 
-// createuser
+// createuser********************************************************************************************
 app.post("/createuser", async (req,res) => {
     try{
         const response = await axios.post(url + "/createuser",req.body);
@@ -107,12 +106,12 @@ app.post("/createuser", async (req,res) => {
     }
 });
 
-// createcar
+// createcar********************************************************************************************
 app.get("/createcar",(req,res) => {
     res.render("createcar.ejs");
 });
 
-// createcar
+// createcar********************************************************************************************
 app.post("/createcar",upload.single("Image"), async (req,res) => {
     try{
         let data = {
@@ -132,11 +131,11 @@ app.post("/createcar",upload.single("Image"), async (req,res) => {
     }
 });
 
-// showcar
+// showcar********************************************************************************************
 app.get("/showcar", async (req, res) => {
     try {
         const response = await axios.get(url + "/showcar");
-
+        console.log(response.data);
         // เช็ค session และ userlogin
         if (req.session.userdata || userlogin == true) {
             res.render("showcar.ejs", {
@@ -151,7 +150,7 @@ app.get("/showcar", async (req, res) => {
 });
 
 
-// payment
+// payment********************************************************************************************
 app.get("/payment", async (req, res) => {
     try {
         const response = await axios.get(url + "/payment");
@@ -168,7 +167,7 @@ app.get("/payment", async (req, res) => {
     }
 });
 
-// rental
+// rental********************************************************************************************
 app.get("/rental", async (req, res) => {
     try {
         const response = await axios.get(url + "/rental");
@@ -185,7 +184,7 @@ app.get("/rental", async (req, res) => {
     }
 });
 
-// receipt
+// receipt********************************************************************************************
 app.get("/receipt", async (req, res) => {
     try {
         const response = await axios.get(url + "/receipt");
