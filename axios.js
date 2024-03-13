@@ -62,25 +62,29 @@ app.post("/login", async (req,res) => {
             username: req.body.username,
             password: req.body.password
         }
-        console.log(data);
+        const username = req.session.user ? req.session.user.name : '';
+        // console.log(data);
+        
+        
         const response = await axios.post(url + "/login",data);
+        // if(data.password == response.data.password){}
         if (response.data.massage == true){
-            userlogin = true;
-            res.redirect("/showcar");
+            if(data.password === response.data.checkuser.password){
+                userlogin = true;
+                console.log(userlogin)
+                res.redirect("/showcar");
+                // res.redirect("/login");
+            }else{
+                res.redirect("/");
+            }
+            
         }
-        // await axios.get(url + "/login",data);
-        // response.data.forEach(e => {
-        //     if (req.body.username == e.username && req.body.password == e.password) {
-        //         userlogin = true;
-        //         req.session.userdata = {
-        //             name: res.data.username
-        //         }
-        //         console.log(req.session.userdata);
-        //     }
-        // });
+        else{
+            res.redirect("/");
+        }
     }
     catch{
-        res.status(500).send("error")
+        res.status(500).redirect("/")
     }
 });
 
