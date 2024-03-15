@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/create.css"/>
+    <title>แอดมิน</title>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <!-- <a href="payment">การชำระเงิน</a> -->
+            <!-- <a href="history">history</a> -->
+      </div>
+
+      <center>
+        <h1 class="main-heading">ระบบการเช่ารถยนต์</h1>
+        <main class="main-content">
+            <table class="car-table">
+                <thead>
+            <tr>
+                <th>รหัสรถ</th>
+                <th>ทะเบียนรถ</th>
+                <th>ปีที่ผลิต</th>
+                <th>จำนวนที่นั่ง</th>
+                <th>ราคาเช่าต่อวัน</th>
+                <th>ค่าประกันรถ</th>
+                <th>ยี่ห้อ</th>
+                <th>สี</th>
+                <th>ภาพรถ</th>
+                <th>รายละเอียด</th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < admincar.length; i++) { %>
+                    <tr>
+                        <td><%= admincar[i].carid %></td>
+                        <td><%= admincar[i].licenseplate %></td>
+                        <td><%= admincar[i].year %></td>
+                        <td><%= admincar[i].capacity %></td>
+                        <td>$<%= admincar[i].priceperday %></td>
+                        <td>$<%= admincar[i].insurance_charge %></td>
+                        <td><%= admincar[i].brand %></td>
+                        <td><%= admincar[i].color %></td>
+                        <td>
+                            <img src="/images/<%= admincar[i].Image %>" alt="" class="car-image">
+                        </td>
+                        <td>
+                            <a href="/detailrent/<%= admincar[i].carid %>"> <input type="button" value="รายละเอียด" class="btnr"> </a>
+  
+                        </td>
+
+                    </tr>
+                <% } %>
+            </tr>
+        </tbody>
+    </table>
+   
+    <!-- Add your other content or links here -->
+<br><br>
+       <!-- <a href="/createcar"> <input type="button" value="เพิ่มสินค้า" class="btn"></a> -->
+        <a href="/logout"> <input type="button" value="ออกจากระบบ" class="btnB"></a>
+
+    </center>
+</main>
+</body>
+</html>

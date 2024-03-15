@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="topnav">
+      </div>
+
+      <center>
+        <h1 class="main-heading">ระบบการเช่ารถยนต์</h1>
+        <main class="main-content">
+            <table class="car-table">
+                <thead>
+            <tr>
+                <th>rentalid</th>
+                <th>userid</th>
+                <th>carid</th>
+                <th>paymentid</th>
+                <th>checkindate</th>
+                <th>checkoutdate</th>
+                <th>rentaltotal</th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i < data.length; i++) { %>
+                    <tr>
+                        <td><%= data[i].rentalid %></td>
+                        <td><%= data[i].userid %></td>
+                        <td><%= data[i].carid %></td>
+                        <td><%= data[i].paymentid %></td>
+                        <td><%= data[i].checkindate %></td>
+                        <td><%= data[i].checkoutdate %></td>
+                        <td>$<%= data[i].rentaltotal %></td>
+                        <td><a href="/deletehistory/<%= data[i].rentalid %>">Delete</a></td>
+                    </tr>
+                <% } %>
+            </tr>
+        </tbody>
+    </table>
+   
+    <!-- Add your other content or links here -->
+<br><br>
+       <!-- <a href="/createcar"> <input type="button" value="เพิ่มสินค้า" class="btn"></a> -->
+        <a href="/showcar"> <input type="button" value="back" class="btnB"></a>
+
+    </center>
+</main>
+</body>
+</html>

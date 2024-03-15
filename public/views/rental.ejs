@@ -3,24 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rental</title>
     <link rel="stylesheet" href="../css/rental.css"/>
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
 
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4e4e4e;
+        }
+
+        .btnB {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btnB:hover {
+            background-color: #555;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        tr:hover {
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">การชำระเงิน</a>
+    </div>
 
-    <h1>Car Rental System</h1>
-    rentalid <br>
-    userid<br>
-    carid<br>
-    paymentid<br>
-    checkindate<br>
-    checkoutdate<br>
-    rentaltotal<br>
+    <center>
+        <h1>CAR RENTAL SYSTEM</h1>
+        <table>
+            <tr>
+                <th colspan="2">ข้อมูลรถ</th>
+            </tr>
+            <tr>
+                <td>รูปภาพ</td>
+                <td><img src="../images/<%= datacar.Image %>" alt=""></td>
+            </tr>
+            <tr>
+                <td>ยี่ห้อ</td>
+                <td><%= datacar.brand %></td>
+            </tr>
+            <tr>
+                <td>ค่าประกันรถ</td>
+                <td><%= datacar.insurance_charge %></td>
+            </tr>
+        </table>
+        <p><%= datauser.username %></p>
+        <form action="/rental" method="post">
+            <input hidden type="text" value="<%= datauser.userid %>" name="userid">
+            <input hidden type="text" value="<%= datacar.carid %>" name="carid">
+            <input hidden type="text" value="<%= datapayment.paymentid %>" name="paymentid">
 
+            <table>
+                <tr>
+                    <th>วันที่เช่า</th>
+                    <th>วันที่จะคืน</th>
+                </tr>
+                <tr>
+                    <td><input type="date" name="checkindate"></td>
+                    <td><input type="date" name="checkoutdate"></td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="ยืนยัน" class="btn">
+            
+        </form>
+        <br>
+        <br>
 
-    <!-- Add your other content or links here -->
-    <a href="/receipt">receipt</a><br>
-    <a href="/payment">back</a>
+        <a href="/receipt/<%= datauser.userid %>"> <input type="button" value="ชำระเงิน" class="btn"></a> 
+        <a href="/showcar"> <input type="button" value="ย้อนกลับ" class="btnB"></a> 
+    </center>
 </body>
 </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดการจอง</title>
+    <link rel="stylesheet" href="../css/car.css"/>
+    <style>
+        .booking-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .booking-details h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .booking-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .booking-details th, .booking-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .booking-details th {
+            background-color: #f2f2f2;
+        }
+
+        .car-image {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4e4e4e;
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">การชำระเงิน</a>
+        <a href="payment">รายการเช่า</a>
+    </div>
+    
+    <center>  
+
+        <main class="main-content">
+            <div class="booking-details">
+                <h2>รายละเอียดการจอง</h2>
+                <table>
+                    <tr>
+                        <th>รายการ</th>
+                        <th>ข้อมูล</th>
+                    </tr>
+                    <tr>
+                        <td>รหัสรถ:</td>
+                        <td><%= data.carid %></td>
+                    </tr>
+                    <tr>
+                        <td>ทะเบียนรถ:</td>
+                        <td><%= data.licenseplate %></td>
+                    </tr>
+                    <tr>
+                        <td>ปีที่ผลิต:</td>
+                        <td><%= data.year %></td>
+                    </tr>
+                    <tr>
+                        <td>จำนวนที่นั่ง:</td>
+                        <td><%= data.capacity %></td>
+                    </tr>
+                    <tr>
+                        <td>ราคาเช่าต่อวัน:</td>
+                        <td><%= data.priceperday %></td>
+                    </tr>
+                    <tr>
+                        <td>ค่าประกันรถ:</td>
+                        <td><%= data.insurance_charge %></td>
+                    </tr>
+                    <tr>
+                        <td>ยี่ห้อ:</td>
+                        <td><%= data.brand %></td>
+                    </tr>
+                    <tr>
+                        <td>สี:</td>
+                        <td><%= data.color %></td>
+                    </tr>
+                </table>
+                <img src="../images/<%= data.Image %>" class="car-image">
+            </div>
+        </main>
+        <a href="/rental/<%= data.carid %>"><button class="btn">การจอง</button></a>
+        <a href="/showcar"> <input type="button" value="ย้อนกลับ" class="btnB"></a> 
+
+    </center>
+</body>
+</html>

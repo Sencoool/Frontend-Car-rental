@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>เข้าสู่ระบบ</title>
     <link rel="stylesheet" href="../css/log.css"/>
 
 </head>
 <body>
-
+   
     <div class="form-container">
-        <h2 class="form-heading">Login</h2>
+        <h2 class="form-heading">เข้าสู่ระบบ</h2>
     <center>
         <form action="/login" method="post">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" class="input-field">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="input-field">
+            <input type="text" id="username" name="username" class="input-field" placeholder ="ชื่อผู้ใช้งาน"required>
+            <input type="password" id="password" name="password" class="input-field" placeholder ="รหัสผ่าน" required>
             <input type="submit" value="Login" class="btn">
         </form>
     </center>
         <p class="error-message"> </p>
-        <p>Don't have an account? <a href="/createuser" class="link">Create here</a></p>
+        <p>ยังไม่ได้เป็นสมาชิก? <a href="/createuser" class="link">สมัครสมาชิก</a></p>
     </div>
 
 </body>

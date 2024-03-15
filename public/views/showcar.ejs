@@ -1,52 +1,68 @@
+<!-- showcar.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>สินค้า</title>
     <link rel="stylesheet" href="../css/car.css"/>
 
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">เพิ่มเลขบัตรเครดิต</a>
+            <a href="history">ประวัติการทำรายการ</a>
+      </div>
 
-    <center>
-        <h1 class="main-heading">Car Rental System</h1>
-    
-    <main class="main-content">
-        <table class="car-table">
+      <center>
+        <h1 class="main-heading">ระบบการเช่ารถยนต์</h1>
+        <main class="main-content">
+            <table class="car-table">
+                <thead>
             <tr>
-                <th>Car ID</th>
-                <th>License Plate</th>
-                <th>Year</th>
-                <th>Capacity</th>
-                <th>Price Per Day</th>
-                <th>Insurance Charge</th>
-                <th>Brand</th>
-                <th>Color</th>
-                <th>Image</th>
+                <th>รหัสรถ</th>
+                <th>ทะเบียนรถ</th>
+                <th>ปีที่ผลิต</th>
+                <th>จำนวนที่นั่ง</th>
+                <th>ราคาเช่าต่อวัน</th>
+                <th>ค่าประกันรถ</th>
+                <th>ยี่ห้อ</th>
+                <th>สี</th>
+                <th>ภาพรถ</th>
+                <th>รายละเอียด</th>
+            </thead>
+            <tbody>
                 <% for(var i=0; i < showcar.length; i++) { %>
                     <tr>
                         <td><%= showcar[i].carid %></td>
                         <td><%= showcar[i].licenseplate %></td>
                         <td><%= showcar[i].year %></td>
                         <td><%= showcar[i].capacity %></td>
-                        <td><%= showcar[i].priceperday %>$</td>
-                        <td><%= showcar[i].insurance_charge %>$</td>
+                        <td>$<%= showcar[i].priceperday %></td>
+                        <td>$<%= showcar[i].insurance_charge %></td>
                         <td><%= showcar[i].brand %></td>
                         <td><%= showcar[i].color %></td>
                         <td>
-                            <img src="/images/<%= showcar[i].Image %>" alt="">
+                            <img src="/images/<%= showcar[i].Image %>" alt="" class="car-image">
                         </td>
+                        <td>
+                            <a href="/detailrent/<%= showcar[i].carid %>"> <input type="button" value="รายละเอียด" class="btnr"> </a>
+  
+                        </td>
+
                     </tr>
                 <% } %>
             </tr>
-        </table>
-    </main>
+        </tbody>
+    </table>
+   
     <!-- Add your other content or links here -->
-    <div class="button-container">
-        <button class="button"><a href="/logout">Log Out</a><br></button>
-        <button class="button"><a href="/payment">buy</a><br></button>
-        <button class="button"><a href="/createcar">Create Car</a></button>
-    </div></center>
+<br><br>
+       <!-- <a href="/createcar"> <input type="button" value="เพิ่มสินค้า" class="btn"></a> -->
+        <a href="/logout"> <input type="button" value="ออกจากระบบ" class="btnB"></a>
+
+    </center>
+</main>
 </body>
 </html>

@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create car</title>
     <link rel="stylesheet" href="../css/create.css"/>
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">การชำระเงิน</a>
+        <a href="createcar">เพิ่มสินค้า</a>
+      </div>
+    <center>
     <div class="form-container">
+    <h2 class="form-heading">เพิ่มสินค้า</h2>
     <form action="/createcar" method="post" enctype="multipart/form-data">
-        licenseplate<br><input type="text" name="licenseplate"><br>
-        year<br><input type="text" name="year"><br>
-        capacity<br><input type="text" name="capacity"><br>
-        priceperday<br><input type="text" name="priceperday"><br>
-        insurance_charge<br><input type="text" name="insurance_charge"><br>
-        brand<br><input type="text" name="brand"><br>
-        color<br><input type="text" name="color"><br>
-        Image<br><input type="file" name="Image"><br>
-        <input type="submit" value="ok"><br>
-        <a href="/">back</a>
-    </form></div>
+
+        <input type="text" id="licenseplate" name="licenseplate" class="input-field" placeholder ="ทะเบียนรถ"required>
+        <input type="text" id="year" name="year" class="input-field" placeholder ="ปีที่ผลิต"required>
+        <input type="text" id="capacity" name="capacity" class="input-field" placeholder ="จำนวนที่นั่ง"required>
+        <input type="text" id="priceperday" name="priceperday" class="input-field" placeholder ="ราคาเช่าต่อวัน"required>
+        <input type="text" id="insurance_charge" name="insurance_charge" class="input-field" placeholder ="ค่าประกันรถ"required>
+        <input type="text" id="brand" name="brand" class="input-field" placeholder ="ยี่ห้อ"required>
+        <input type="text" id="color" name="color" class="input-field" placeholder ="สีรถ"required>
+        <input type="file" id="Image" name="Image" class="input-field" placeholder ="ภาพรถ"required>
+
+        <input type="submit" value="เพิ่ม" class="btn"><br><br>
+        <a href="/">   <input type="button" value="ย้อนกลับ" class="btnB"><br></a>
+
+    </div>
+    </form>
+</center>
 </body>
 </html>

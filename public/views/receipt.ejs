@@ -8,19 +8,17 @@
 
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">การชำระเงิน</a>
+      </div>
 
-    <h1>receipt</h1>
-    rentalid<br>
-    userid<br>
-    carid<br>
-    paymentid<br>
-    checkindate<br>
-    checkoutdate<br>
-    rentaltotal<br>
+<center>
+    
+    <h1>ชำระเงิน <%= price %></h1>
 
-
-    <!-- Add your other content or links here -->
-    <a href="/">showcar</a><br>
-    <a href="/rental">back</a>
+    <form action="/receipt/:id" method="post"></form>
+    <a href="/showcar"> <input type="button" value="Back" class="btnB"></a> 
+</center>
 </body>
 </html>

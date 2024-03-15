@@ -9,36 +9,25 @@
 
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="showcar">สินค้า</a>
+        <a href="payment">การชำระเงิน</a>
+      </div>
 
-    <h1>Car Payment System</h1>
-
-    <table>
-        <!-- Display user information -->
-        
-        <tr>
-            <td>User ID</td>
-            <td>Username</td>
-        </tr>
+    <center>
+    <div class="form-container">
+        <h2 class="form-heading">กรอกหมายเลขบัตรเครดิต</h2>
         <form action="/payment" method="post">
-            <label for="">User ID</label><br>
-            
-            <label for="">Username</label><br>
-            <label for="">carholdername</label><br>
-            <input type="text" name="carholdername"><br>
-            <label for="">cardnumber</label><br>
-            <input type="text" name="cardnumber"><br>
-            <input type="submit" value="ok">
+            <input for="" type="text" id="cardnumber" name="cardnumber" class="input-field" placeholder ="หมายเลขบัตร"required>
+            <input type="submit" value="ยืนยัน" class="btn">
         </form>
-        <% for(var i=0; i < payment.length; i++) { %>
-            <tr>
-                <td><%= payment[i].userid %></td>
-                <td><%= payment[i].username %></td>
-            </tr>
-        <% } %>
-    </table>
+<br>
+    <a href="/rental"> <input type="button" value="ไปที่การจอง" class="btn"></a> 
+    <br><br><br> <a href="/"> <input type="button" value="ย้อนกลับ" class="btnB"></a>
 
-    <!-- Add your other content or links here -->
-    <a href="/rental">Go to Rental</a><br>
-    <a href="/">Go Back</a>
+    
+</div>
+</form>
+</center>
 </body>
 </html>
